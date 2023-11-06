@@ -2,18 +2,20 @@
 Main cli or app entry point
 """
 
-from mylib.calculator import add
-import click
+from mylib.lib import extract, transform, load, describe, query
+from pyspark.sql import SparkSession
 
-#var=1;var=2
-
-@click.command("add")
-@click.argument("a", type=int)
-@click.argument("b", type=int)
-def add_cli(a, b):
-    click.echo(add(a, b))
-
+def main():
+    file = extract()
+    transform(file)
+    spark = SparkSession.builder.appName("Survival").getOrCreate()
+    df = load(spark)
+    # print(df)
+    describe(df)
+    query(df, "ttmp")
+    spark.stop()
+    return 0
+    # quit()
 
 if __name__ == "__main__":
-    # pylint: disable=no-value-for-parameter
-    add_cli()
+    main()
