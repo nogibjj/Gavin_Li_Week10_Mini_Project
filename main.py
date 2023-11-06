@@ -5,6 +5,7 @@ Main cli or app entry point
 from mylib.lib import extract, transform, load, describe, query
 from pyspark.sql import SparkSession
 
+
 def main():
     file = extract()
     transform(file)
@@ -16,6 +17,7 @@ def main():
     spark.stop()
     return 0
     # quit()
+
 
 if __name__ == "__main__":
     main()

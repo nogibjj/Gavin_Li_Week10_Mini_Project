@@ -1,37 +1,53 @@
-[![CI](https://github.com/nogibjj/python-ruff-template/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/python-ruff-template/actions/workflows/cicd.yml)
-## Template for Python projects with RUFF linter
+[![CI](https://github.com/nogibjj/Gavin_Li_Week10_Mini_Project/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Gavin_Li_Week10_Mini_Project/actions/workflows/cicd.yml)
+#
 
-![1 15_rust_built_python_tools](https://github.com/nogibjj/python-ruff-template/assets/58792/db5f7bda-a977-4c67-acbe-a70fe034fbdf)
+# IDS 706 Data Engineering Week 10 Mini Project
 
+Gavin Li `gl183`
 
+## Purpose of the project
 
-1. First thing to do on launch is to open a new shell and verify virtualenv is sourced.
+The purpose of this week's mini project is to perform ETL (Extract - Transform - Load) to a dataset.
 
-Things included are:
+Then display a summary of the data and a query result of the data both using PySpark and SparkSQL.
 
-* `Makefile`
+## Result of `make format`, `make lint`, and `make test`
 
-* `Pytest`
+![rslts](./resources/rslts.png)
 
-* `pandas`
+## ETL functionality
 
-* `Ruff`:  
+[E]xtraction - Retrieved a dataset from online source by sending GET request, and stored the data in a csv file.
 
-Run `make lint` which runs `ruff check`.  You can find out more info on [Ruff here](https://github.com/astral-sh/ruff).
+[T]ransform - Transformed the dataset by dropping unrelevant variables, and write back to the csv file.
 
-* `Dockerfile`
+[L]oad - Load the transformed data to Spark using PySpark API.
 
-* `GitHub copilot`
+## Summary of the data
 
-* `jupyter` and `ipython` 
+Here is a summary of the loaded data
 
-* A base set of libraries for devops and web
+![summary](resources/summary.png)
 
-* `githubactions`
+## Query
+
+I calculated the survival rate for different gender using the SQL query below:
+
+```sql
+SELECT
+    Sex,
+    AVG(Survived) AS survival_rate
+FROM table
+GROUP BY Sex
+```
+
+and here is the result:
+
+![query_rslt](resources/query.png)
 
 ## References
 
-![1 1-function-essence-of-programming](https://github.com/nogibjj/python-ruff-template/assets/58792/f7f33cd3-cff5-4014-98ea-09b6a29c7557)
+[Professor Noah's Python Template](https://github.com/nogibjj/python-ruff-template/assets/58792/f7f33cd3-cff5-4014-98ea-09b6a29c7557)
 
 
 
